@@ -5,5 +5,6 @@
     <!-- 别名 -->
     <typeAliases>
        <package name="com.situ.mall.pojo"/>
+       <package name="com.situ.mall.vo"/>
     </typeAliases>
 </configuration>
