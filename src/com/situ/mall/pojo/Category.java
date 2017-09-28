@@ -9,7 +9,7 @@ public class Category {
 
 	    private String name;
 
-	    private Boolean status;
+	    private Integer status;
 
 	    private Integer sortOrder;
 
@@ -22,7 +22,7 @@ public class Category {
 			// TODO Auto-generated constructor stub
 		}
 
-		public Category(Integer id, Integer parentId, String name, Boolean status, Integer sortOrder, Date createTime,
+		public Category(Integer id, Integer parentId, String name, Integer status, Integer sortOrder, Date createTime,
 				Date updateTime) {
 			super();
 			this.id = id;
@@ -58,11 +58,11 @@ public class Category {
 			this.name = name;
 		}
 
-		public Boolean getStatus() {
+		public Integer getStatus() {
 			return status;
 		}
 
-		public void setStatus(Boolean status) {
+		public void setStatus(Integer status) {
 			this.status = status;
 		}
 
@@ -95,8 +95,7 @@ public class Category {
 			return "Category [id=" + id + ", parentId=" + parentId + ", name=" + name + ", status=" + status
 					+ ", sortOrder=" + sortOrder + ", createTime=" + createTime + ", updateTime=" + updateTime + "]";
 		}
-	    
-	    
+
 	    
 
 

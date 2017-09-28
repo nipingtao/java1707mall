@@ -30,6 +30,38 @@
 		
 		 $("#form-add").ajaxSubmit(options);
 	}
+	$(function () {
+		$.ajax({
+			url:"${pageContext.request.contextPath}/category/parenCategoryList.action",
+			dataType:"json",
+			success:function (data,textStatus,ajax) {
+			
+				var html = "<option>-- 请选择 --</option>"
+				for (var i = 0; i < data.length; i++) {
+					
+					html += "<option value='"+data[i].id+"'>" + data[i].name + "</option>";
+				}
+				$("#ParentCategory").html(html);
+			}
+		});
+	});
+	
+	function selectCategory (Obj) {
+		var parentId = $(Obj).val();
+		$("#Category option:gt(0)").remove();
+		$.ajax({
+			url:"${pageContext.request.contextPath}/category/categoryList.action",
+			dataTypr:"json",
+			data:"parentId="+parentId,
+			success:function (data,textStatus,ajax) {
+				var html = "<option>-- 请选择 --</option>";
+				for (var i =0; i < data.length; i++) {
+					html += "<option value='"+data[i].id+"'>" + data[i].name + "</option>";
+				}
+				$("#Category").html(html);
+			}
+		});
+	}
 </script>
 </head>
 <body>
@@ -57,11 +89,15 @@
 				    <div>
 		            <form id="form-add" class="form_border"  action="/Java1707Mall/product/AddProductService.action" enctype="multipart/form-data" method="post">
 	                    
-	                    <div class="form-group">
-	                        <label>分类id</label>
-	                        <input type="text" name="categoryId"  class="form-control" placeholder="分类id">
-	                        <span id="nameInfo" > </span>
-	                    </div>
+	                    <div class="input-group input-group-sm">
+ 						 <span class="input-group-addon" id="sizing-addon3">分类</span>
+ 						 <select  class="form-control" id="ParentCategory" onchange="selectCategory(this)">
+ 						 	<option value="">-- 请选择 --</option>
+ 						 </select>
+ 						 <select  class="form-control" id="Category" name="categoryId">
+ 						 	<option value="">-- 请选择 --</option>
+ 						 </select>
+					    </div>
 	                    
 	                    <div class="form-group">
 	                        <label>产品名</label>
@@ -99,10 +135,10 @@
 	                        <input type="text" name="updateTime" class="form-control" placeholder="更新时间">
 	                    </div>
 	                     <div  class="form-group">
-				  	<label >产品主图</label>
-				  	<img alt="" id="imgId" src="" width="100" height="100">
-				  	<input type="hidden" id="mainImage" name="mainImage"/>
-				  	<input type="file" name="pictureFile" onchange="uploadPic();"/>
+					  		<label >产品主图</label>
+						  	<img alt="" id="imgId" src="" width="100" height="100">
+						  	<input type="hidden" id="mainImage" name="mainImage"/>
+						  	<input type="file" name="pictureFile" onchange="uploadPic();"/>
 				         </div> 
 	                    <input class="btn btn-success btn-lg" type="submit" value="添加"/>
                 	</form>

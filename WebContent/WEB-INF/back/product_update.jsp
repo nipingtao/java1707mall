@@ -36,7 +36,21 @@
 				</head>
 		<form action="/Java1707Mall/product/updateProduct.action" method="post">
 		&nbsp;&nbsp;ID： &nbsp;<input type="text" name="id" readonly="readonly" value="${product.getId()}" class="form-control"/><br>
-		分类ID：<input type="text" name="categoryId"  value="${product.getCategoryId()}" class="form-control"/><br>
+		分类名称：
+		    <!--  <select name="categoryId" class="form-control" ">
+			<option value="">分类名称</option>
+			<option value="100001">家用电器</option>
+			<option value="100002">数码3C</option>
+			<option value="100003">服装箱包</option>
+			<option value="100004">食品生鲜</option>
+			<option value="100005">酒水饮料</option>
+		</select> -->
+		<select name="categoryId" class="form-control">
+         	<c:forEach items="${list}" var="category">
+              <option value="${category.id}" >${category.name}</option>
+         	</c:forEach>	
+         </select>
+		
 		产品名：<input type="text" name="name"  value="${product.getName()}" class="form-control"/><br>
 		副标题：<input type="text" name="subtitle" value="${product.getSubtitle()}" class="form-control"/><br>
 		价格：<input type="text" name="price" value="${product.getPrice()}" class="form-control"/><br>

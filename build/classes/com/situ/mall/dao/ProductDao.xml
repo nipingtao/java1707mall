@@ -17,6 +17,9 @@
 		<result property="status" column="status" />
 		<result property="createTime" column="createtime" javaType="java.sql.Date" jdbcType="DATE" />
 		<result property="updateTime" column="updatetime" javaType="java.sql.Date" jdbcType="DATE" />
+	    <association property="category" javaType="Category">
+            <result property="name" column="category_name"/>
+        </association>
 	</resultMap>
   
   	<sql id="Base_Column_List" >
@@ -38,6 +41,9 @@
 		<update id="update" parameterType="Product">
   			update product
   			<set>
+  			<if test="categoryId!=null">
+				category_id=#{categoryId},
+			</if>
 			<if test="name!=null">
 				name=#{name},
 			</if>
@@ -68,7 +74,10 @@
 		product
 	</select>
 	<select id="findPageBeanList" resultMap="productMap">
-		select <include refid="Base_Column_List"></include> from product
+		<!-- select <include refid="Base_Column_List"></include> from product -->
+		SELECT p.id,c.name AS category_name,p.name,p.subtitle,p.main_image,p.price,p.stock,p.status,p.createtime,p.updatetime
+         FROM product AS p INNER JOIN  category AS c
+         ON p.category_id=c.id
 		limit #{index},#{pageSize}
 	</select>
 	<insert id="add" parameterType="Product" >
@@ -76,6 +85,56 @@
 	    main_image,sub_images,detail, price,stock,status,createtime,updatetime) 
 	    values (#{id},#{categoryId},#{name},#{subtitle},#{mainImage},#{subImages},#{detail},#{price},#{stock},#{status},now(),now())
 	</insert>
+	<select id="getTotalCount1" parameterType="SearchCondition"
+		resultType="int">
+		SELECT COUNT(*) FROM product 
+		<where>
+			<if test="name!=null and !&quot;&quot;.equals(name.trim())">
+				and name like '%${name}%'
+			</if>
+			<if test="status!=null and !&quot;&quot;.equals(status.trim())">
+				and status = #{status}
+			</if>
+		</where>
+	</select>
+	<select id="findPageBeanList1" parameterType="SearchCondition"
+		resultMap="productMap">
+		<!-- select <include refid="Base_Column_List"></include> from product -->
+		SELECT p.id,c.name AS category_name,p.name,p.subtitle,p.main_image,p.price,p.stock,p.status,p.createtime,p.updatetime
+         FROM product AS p INNER JOIN  category AS c
+         ON p.category_id=c.id
+		<!-- where标签可以自动添加where，同时处理sql语句中第一个and关键字 -->
+		<where>
+			<if test="name!=null and !&quot;&quot;.equals(name.trim())">
+				and p.name like '%${name}%'
+			</if>
+			<if test="status!=null and !&quot;&quot;.equals(status.trim())">
+				and p.status = #{status}
+			</if>
+		</where>
+		limit #{pageIndex},#{pageSize}
+	</select>
+	
+	<select id="searchByCondition" parameterType="SearchCondition"
+		resultMap="productMap">
+		<!-- select <include refid="Base_Column_List"></include> from product -->
+		SELECT p.id,c.name AS category_name,p.name,p.subtitle,p.main_image,p.price,p.stock,p.status,p.createtime,p.updatetime
+         FROM product AS p INNER JOIN  category AS c
+         ON p.category_id=c.id
+		<!-- where标签可以自动添加where，同时处理sql语句中第一个and关键字 -->
+		<where>
+			<if test="name!=null and !&quot;&quot;.equals(name.trim())">
+				and name like '%${name}%'
+			</if>
+			<if test="status!=null and !&quot;&quot;.equals(status.trim())">
+				and status = #{status}
+			</if>
+		</where>
+
+	</select>
+	
+
+	
   			
   
   

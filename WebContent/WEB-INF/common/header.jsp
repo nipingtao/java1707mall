@@ -17,7 +17,7 @@
         <div class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
                 <li class="active"><a href="${pageContext.request.contextPath}/product/findPageBeanList.action"><span class="glyphicon glyphicon-home"></span>&nbsp;&nbsp;商品管理</a></li>
-                <li ><a href="${pageContext.request.contextPath}/banji/findPageBeanList.action"><span class="glyphicon glyphicon-user"></span>&nbsp;&nbsp;班级管理</a></li>
+                <li ><a href="${pageContext.request.contextPath}/category/findPageBeanList.action"><span class="glyphicon glyphicon-user"></span>&nbsp;&nbsp;商品分类</a></li>
                 <li><a href="${pageContext.request.contextPath}/curriculum/findPageBeanList.action"><span class="glyphicon glyphicon-list-alt"></span>&nbsp;&nbsp;课程管理</a></li>
                 <li><a href="${pageContext.request.contextPath}/administ/findAll.action"><span class="glyphicon glyphicon-tags"></span>&nbsp;&nbsp;教务管理</a></li>
             </ul>

@@ -6,9 +6,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.situ.mall.dao.ProductDao;
+import com.situ.mall.pojo.Category;
 import com.situ.mall.pojo.Product;
 import com.situ.mall.service.IProductService;
 import com.situ.mall.vo.PageBean;
+import com.situ.mall.vo.SearchCondition;
+
 
 
 
@@ -81,4 +84,34 @@ public class ProductServiceImpl implements IProductService {
 		
 	}
 
-}
+		@Override
+		public PageBean<Product> searchByCondition(SearchCondition searchCondition) {
+			PageBean<Product> pageBean = new PageBean<Product>();
+			 //当前是第几页
+			pageBean.setPageIndex(searchCondition.getPageIndex());
+			System.out.println(searchCondition.getPageIndex());
+			//每一页有多少条数据
+			pageBean.setPageSize(searchCondition.getPageSize());
+			//数据库中一共有多少条记录
+			int totalCount = productDao.getTotalCount1(searchCondition);
+			pageBean.setTotalCount(totalCount);
+			// 一共有多少页
+			int totalPage = (int) Math.ceil(1.0 * totalCount / searchCondition.getPageSize()); 
+			pageBean.setTotalPage(totalPage);
+			// 当前页的数据
+			searchCondition.setPageIndex((searchCondition.getPageIndex() - 1) * searchCondition.getPageSize());
+			List<Product> list = productDao.findPageBeanList1(searchCondition);
+			pageBean.setList(list);
+			return pageBean;
+		}
+
+		@Override
+		public List<Category> findParentCategory() {
+			return  productDao.findParentCategory();
+		}
+
+		
+		}
+
+	
+

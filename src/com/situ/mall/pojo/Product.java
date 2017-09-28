@@ -28,6 +28,8 @@ public class Product {
     private Date createTime;
 
     private Date updateTime;
+    
+    private Category category;
 
 	public Product() {
 		super();
@@ -35,6 +37,26 @@ public class Product {
 	}
 	
 	
+	public Product(Integer id, Integer categoryId, String name, String subtitle, String mainImage, String subImages,
+			String detail, BigDecimal price, Integer stock, Integer status, Date createTime, Date updateTime,
+			Category category) {
+		super();
+		this.id = id;
+		this.categoryId = categoryId;
+		this.name = name;
+		this.subtitle = subtitle;
+		this.mainImage = mainImage;
+		this.subImages = subImages;
+		this.detail = detail;
+		this.price = price;
+		this.stock = stock;
+		this.status = status;
+		this.createTime = createTime;
+		this.updateTime = updateTime;
+		this.category = category;
+	}
+
+
 	public Product(Integer id, String name, String subtitle, BigDecimal price, Integer stock, Integer status,
 			Date createTime, Date updateTime) {
 		super();
@@ -65,6 +87,16 @@ public class Product {
 		this.createTime = createTime;
 		this.updateTime = updateTime;
 	}
+
+	public Category getCategory() {
+		return category;
+	}
+
+
+	public void setCategory(Category category) {
+		this.category = category;
+	}
+
 
 	public Integer getId() {
 		return id;
@@ -162,13 +194,16 @@ public class Product {
 		this.updateTime = updateTime;
 	}
 
+
 	@Override
 	public String toString() {
 		return "Product [id=" + id + ", categoryId=" + categoryId + ", name=" + name + ", subtitle=" + subtitle
 				+ ", mainImage=" + mainImage + ", subImages=" + subImages + ", detail=" + detail + ", price=" + price
 				+ ", stock=" + stock + ", status=" + status + ", createTime=" + createTime + ", updateTime="
-				+ updateTime + "]";
+				+ updateTime + ", category=" + category + "]";
 	}
+
+	
     
     
     
