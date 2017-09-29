@@ -61,6 +61,16 @@ public class CategoryServiceImpl implements ICategoryService {
 		return	categoryDao.findCategory(parentId);
 	}
 
+	@Override
+	public boolean add(Category category) {
+		return  categoryDao.add(category);
+	}
+
+	@Override
+	public Product findById(int id) {
+		return categoryDao.findById(id);
+	}
+
 	
 	
 }

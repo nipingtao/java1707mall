@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.situ.mall.pojo.Category;
+import com.situ.mall.pojo.Product;
 import com.situ.mall.service.ICategoryService;
 import com.situ.mall.vo.PageBean;
 
@@ -70,5 +71,32 @@ public class CategoryController {
 		public List<Category> categoryList(int parentId) {
 			List<Category> list =  categoryService.findCategory(parentId);
 			return list;
+		}
+	  
+	  @RequestMapping(value="/getAddPage")
+	 	private ModelAndView getAddPage(Category category ){
+		    /*List<Category> list = categoryService.findCategory(category.getParentId());*/
+		   List<Category> list = categoryService.findParentCategory();
+	 		ModelAndView modelAndView = new ModelAndView();
+	 		modelAndView.addObject("list",list);
+	 		modelAndView.setViewName("category_addcategory");
+	 		return modelAndView;
+	 	}
+	  
+	  @RequestMapping(value="/AddCategoryService")
+	 	private String AddCategoryService(Category category)  {
+		  categoryService.add(category);
+	 		return "redirect:/category/findPageBeanList.action";
+	 	}
+	  
+	  @RequestMapping(value="/update")
+		private ModelAndView update(String id){
+	 Product product = categoryService.findById(Integer.parseInt(id));
+	     List<Category> list = categoryService.findParentCategory();
+			ModelAndView modelAndView = new ModelAndView();
+			modelAndView.addObject("product",product);
+			modelAndView.addObject("list",list);
+			modelAndView.setViewName("category_update");
+			return modelAndView;
 		}
 }

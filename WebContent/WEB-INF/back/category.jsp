@@ -41,7 +41,7 @@
 		        <div class="col-md-2">
 		            <div class="list-group">
 		                <a href="${pageContext.request.contextPath}/product/findPageBeanList.action" class="list-group-item active">商品管理</a>
-		                <a href="${pageContext.request.contextPath}/product/getAddPage.action" class="list-group-item">添加商品</a>
+		                <a href="${pageContext.request.contextPath}/category/getAddPage.action" class="list-group-item">添加分类产品</a>
 		                 
 		            </div>
 		        </div>
@@ -51,7 +51,7 @@
 		                    <a href="${pageContext.request.contextPath}/product/findPageBeanList.action">商品列表</a>
 		                </li>
 		                <li>
-		                	<a href="${pageContext.request.contextPath}/product/getAddPage.action">添加商品</a>
+		                	<a href="${pageContext.request.contextPath}/category/getAddPage.action">添加分类产品</a>
 		                </li>
 		            </ul>
 		             <% 
@@ -109,7 +109,7 @@
 					<fmt:formatDate value='${stu.getUpdateTime()}' pattern='yyyy-MM-dd'/>
 					</td>
 					<td ><a href="javascript:delCategory('${stu.id }')"><input type="button" value="删除" class="btn btn-danger"/></a></td>
-					<td><a  href="${pageContext.request.contextPath}/product/update.action?id=${stu.getId()}"><input type="button" value="修改" class="btn btn-info"/></a></td>
+					<td><a  href="${pageContext.request.contextPath}/category/update.action?id=${stu.getId()}"><input type="button" value="修改" class="btn btn-info"/></a></td>
 			      </tr>
 		</c:forEach>
 	</table>

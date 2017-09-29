@@ -5,7 +5,7 @@ import java.sql.Date;
 public class Category {
 	 private Integer id;
 
-	    private Integer parentId;
+	    private int parentId;
 
 	    private String name;
 
@@ -22,7 +22,7 @@ public class Category {
 			// TODO Auto-generated constructor stub
 		}
 
-		public Category(Integer id, Integer parentId, String name, Integer status, Integer sortOrder, Date createTime,
+		public Category(Integer id, int parentId, String name, Integer status, Integer sortOrder, Date createTime,
 				Date updateTime) {
 			super();
 			this.id = id;
@@ -42,11 +42,11 @@ public class Category {
 			this.id = id;
 		}
 
-		public Integer getParentId() {
+		public int getParentId() {
 			return parentId;
 		}
 
-		public void setParentId(Integer parentId) {
+		public void setParentId(int parentId) {
 			this.parentId = parentId;
 		}
 
@@ -96,7 +96,7 @@ public class Category {
 					+ ", sortOrder=" + sortOrder + ", createTime=" + createTime + ", updateTime=" + updateTime + "]";
 		}
 
-	    
+		
 
 
 	

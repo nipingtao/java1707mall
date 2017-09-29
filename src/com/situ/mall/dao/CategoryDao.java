@@ -5,6 +5,7 @@ import java.util.List;
 import org.apache.ibatis.annotations.Param;
 
 import com.situ.mall.pojo.Category;
+import com.situ.mall.pojo.Product;
 
 
 public interface CategoryDao {
@@ -18,5 +19,9 @@ public interface CategoryDao {
 	List<Category> findParentCategory();
 
 	List<Category> findCategory(int parentId);
+
+	boolean add(Category category);
+
+	Product findById(int id);
 
 }
