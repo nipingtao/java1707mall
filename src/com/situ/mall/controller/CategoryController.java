@@ -91,12 +91,24 @@ public class CategoryController {
 	  
 	  @RequestMapping(value="/update")
 		private ModelAndView update(String id){
-	 Product product = categoryService.findById(Integer.parseInt(id));
-	     List<Category> list = categoryService.findParentCategory();
+		  Category category = categoryService.findById(Integer.parseInt(id));
+	      List<Category> list = categoryService.findParentCategory();
 			ModelAndView modelAndView = new ModelAndView();
-			modelAndView.addObject("product",product);
+			modelAndView.addObject("category",category);
 			modelAndView.addObject("list",list);
 			modelAndView.setViewName("category_update");
 			return modelAndView;
 		}
+	  
+	  @RequestMapping(value = "/updatecategory")
+		private String updatecategory(Category category) {
+		  categoryService.update(category);
+			return "redirect:/category/findPageBeanList.action";
+		}
+	  @RequestMapping(value = "/deleteAll")
+		public String deleteAll(String[] ids) {
+		  categoryService.deleteAll(ids);
+			return "redirect:/category/findPageBeanList.action";
+		}
+
 }

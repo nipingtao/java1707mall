@@ -110,6 +110,11 @@ public class ProductServiceImpl implements IProductService {
 			return  productDao.findParentCategory();
 		}
 
+		@Override
+		public List<Product> find(int CategoryId) {
+			return productDao.find(CategoryId);
+		}
+
 		
 		}
 

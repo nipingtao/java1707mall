@@ -34,4 +34,8 @@ public interface ProductDao {
 	List<Category> findParentCategory();
 
 
+
+	List<Product> find(int CategoryId);
+
+
 }

@@ -133,7 +133,13 @@
 
 	</select>
 	
-
+	<select id="find" parameterType="int"
+		resultMap="productMap">
+		SELECT p.id,c.name AS category_name,p.name,p.subtitle,p.main_image,p.price,p.stock,p.status,p.createtime,p.updatetime
+         FROM product AS p INNER JOIN  category AS c
+         ON p.category_id=c.id where category_id = #{CategoryId}
+	</select>
+	
 	
   			
   

@@ -12,8 +12,11 @@
 	content="width=devi
 	ce-width, initial-scale=1 , user-scalable=no">
 <title></title>
+
 <%@include file="../common/head.jsp"%>
-<%@include file="../common/header.jsp"%>
+<%@include file="../common/headerf.jsp"%>
+<link rel="stylesheet"
+	href="${ctx}/resources/thirdlib/bootstrap/css/bootstrap.css" />
 <script type="text/javascript" src="/Java1707Mall/resources/thirdlib/jquery/jquery.form.js"></script>
 <script type="text/javascript">
 	function uploadPic(){
@@ -39,18 +42,18 @@
 		<div class="row">
 			<div class="col-md-2">
 		            <div class="list-group">
-		                <a href="${pageContext.request.contextPath}/product/findPageBeanList.action" class="list-group-item ">商品管理</a>
-		                <a href="${pageContext.request.contextPath}/product/getAddPage.action" class="list-group-item active">添加商品</a>
+		                <a href="${pageContext.request.contextPath}/category/findPageBeanList.action" class="list-group-item ">商品管理</a>
+		                <a href="${pageContext.request.contextPath}/category/getAddPage.action" class="list-group-item active">添加商品</a>
 		                 
 		            </div>
 		        </div>
 		        <div class="col-md-10">
 		            <ul class="nav nav-tabs">
 		                <li >
-		                    <a href="${pageContext.request.contextPath}/product/findPageBeanList.action">商品列表</a>
+		                    <a href="${pageContext.request.contextPath}/category/findPageBeanList.action">商品列表</a>
 		                </li>
 		                <li class="active">
-		                	<a href="${pageContext.request.contextPath}/product/getAddPage.action">添加商品</a>
+		                	<a href="${pageContext.request.contextPath}/category/getAddPage.action">添加商品</a>
 		                </li>
 		            </ul>
 				</head>

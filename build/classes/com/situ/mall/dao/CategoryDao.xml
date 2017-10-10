@@ -49,7 +49,32 @@
 	
 	<select id="findById" parameterType="int" resultMap="categoryMap">
 			select * from category where id=#{id}
-		</select> 
+	</select> 
+	
+	<update id="update" parameterType="Product">
+  			update category
+  			<set>
+  			<if test="categoryId!=null">
+				parent_id=#{parentId},
+			</if>
+			<if test="name!=null">
+				name=#{name},
+			</if>
+			<if test="status!=null">
+				status=#{status},
+			</if>
+			<if test="createTime!=null">
+				createTime=#{createTime},
+			</if>
+			 <if test="updateTime!=null">
+				updateTime=#{updateTime},
+			</if>
+		</set>
+		where id=#{id}
+	</update>
+	 <select id="findAll" resultMap="categoryMap">
+  		select <include refid="Base_Column_List"></include> from category
+  	   </select>
   
   
   

@@ -22,6 +22,12 @@ public interface CategoryDao {
 
 	boolean add(Category category);
 
-	Product findById(int id);
+	Category findById(int id);
+
+	void update(Category category);
+
+	List<Category> findAll();
+
+	List<Category> find(int findCategoryId);
 
 }

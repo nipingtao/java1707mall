@@ -18,7 +18,15 @@ public interface ICategoryService {
 
 	boolean add(Category category);
 
-	Product findById(int id);
+	Category findById(int id);
+
+	void update(Category category);
+
+	boolean deleteAll(String[] ids);
+
+	List<Category> findAll();
+
+	List<Category> find(int findCategoryId);
 
 
 }

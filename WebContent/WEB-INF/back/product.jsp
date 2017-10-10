@@ -8,8 +8,11 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
+
 <%@include file="../common/head.jsp"%>
 <%@include file="../common/header.jsp"%>
+<link rel="stylesheet"
+	href="${ctx}/resources/thirdlib/bootstrap/css/bootstrap.css" />
 <script type="text/javascript">
 	function goPage(pageIndex) {
 		$('#pageIndex').val(pageIndex);
@@ -75,10 +78,10 @@
 					action="${pageContext.request.contextPath}/product/searchByCondition.action"
 					method="post" class="form-inline">
 
-					<input type="hidden" name="pageIndex" id="pageIndex" /> 产品名：<input
-						type="text" name="name" value="${searchCondition.name }"
-						class="form-control" /> 状态：<select id="status" name="status"
-						class="form-control">
+					<input type="hidden" name="pageIndex" id="pageIndex" />
+					 产品名：<input type="text" name="name" value="${searchCondition.name }"
+						class="form-control" /> 
+						状态：<select id="status" name="status" class="form-control">
 						<option id="option" value="">不限</option>
 						<option id="option" value="1">在售</option>
 						<option id="option" value="2">下架</option>
@@ -115,8 +118,7 @@
 					<td>${stu.category.name}</td>
 					<td>${stu.name}</td>
 					<td>${stu.subtitle}</td>
-					<td><img alt="" src="/pic/${stu.mainImage}" width="80"
-						height="60""></td>
+					<td><img alt="" src="/pic/${stu.mainImage}" width="80" height="60""></td>
 					<%-- <td>${stu.subImages}</td> --%>
 					<%-- <td>${stu.detail}</td> --%>
 					<td>${stu.price}</td>

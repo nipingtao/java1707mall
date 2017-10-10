@@ -67,9 +67,36 @@ public class CategoryServiceImpl implements ICategoryService {
 	}
 
 	@Override
-	public Product findById(int id) {
+	public Category findById(int id) {
 		return categoryDao.findById(id);
 	}
+
+	@Override
+	public void update(Category category) {
+		 categoryDao.update(category);
+		
+	}
+	@Override
+	public boolean deleteAll(String[] ids) {
+		for (String id : ids) {
+			categoryDao.deletById(Integer.parseInt(id));
+			
+		}
+		return true;
+	
+}
+
+	@Override
+	public List<Category> findAll() {
+		return categoryDao.findAll();
+	}
+
+	@Override
+	public List<Category> find(int findCategoryId) {
+		return categoryDao.find(findCategoryId);
+	}
+
+
 
 	
 	

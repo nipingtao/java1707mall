@@ -15,6 +15,8 @@
 <body>
 	<%@include file="../common/head.jsp"%>
 	<%@include file="../common/header.jsp"%>
+	<link rel="stylesheet"
+	href="${ctx}/resources/thirdlib/bootstrap/css/bootstrap.css" />
 	<div class="container">
 		<div class="row">
 			<div class="col-md-2">

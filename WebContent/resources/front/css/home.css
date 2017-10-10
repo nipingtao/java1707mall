@@ -1,0 +1,7 @@
+
+.pc-nav-title h3 { font-size:16px; padding:15px 0 8px 0;}
+.pc-nav-title h4 { font-size:14px; padding:15px 0 8px 0;}
+.pc-nav-digit ul li { width:140px; text-align:center; float:left; padding:40px 22px 0 22px}
+.pc-nav-digit ul li .digit1 a { width:147px; height:149px; display:block; }
+.pc-nav-digit ul li .digit2 a {  font-size:14px; padding-top:10px; display:block;}
+.pc-nav-digit-clear  {border:none;}

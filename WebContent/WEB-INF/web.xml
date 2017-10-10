@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" id="WebApp_ID" version="2.5">
   <display-name>Java1707SSM</display-name>
-  <welcome-file-list>
-    <welcome-file>index.html</welcome-file>
+ <welcome-file-list>
+    <welcome-file>index.shtml</welcome-file>
     <welcome-file>index.htm</welcome-file>
     <welcome-file>index.jsp</welcome-file>
     <welcome-file>default.html</welcome-file>
@@ -50,6 +50,23 @@
     <servlet-mapping>
         <servlet-name>springmvc</servlet-name>
        <url-pattern>*.action</url-pattern>
+    </servlet-mapping>
+    
+    
+    <!-- 配置SpringMVC 前台 -->
+    <servlet>
+        <servlet-name>springmvc-front</servlet-name>
+        <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+       <init-param>
+           <param-name>contextConfigLocation</param-name>
+           <param-value>classpath:springmvc-front.xml</param-value>
+       </init-param>
+       <!-- 启动tomcat时候启动 -->
+       <load-on-startup>1</load-on-startup>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>springmvc-front</servlet-name>
+       <url-pattern>*.shtml</url-pattern>
     </servlet-mapping>
  
   

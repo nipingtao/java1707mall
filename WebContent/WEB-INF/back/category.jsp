@@ -7,7 +7,10 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
 	<%@include file="../common/head.jsp" %>
+	<link rel="stylesheet"
+	href="${ctx}/resources/thirdlib/bootstrap/css/bootstrap.css" />
 <title>Insert title here</title>
      <script type="text/javascript">
 	function goPage(pageIndex) {
@@ -28,19 +31,19 @@
 		var isDel = confirm("您确认要删除吗？");
 		if (isDel) {
 			//要删除
-			$("#mainForm").attr("action", "${pageContext.request.contextPath}/product/deleteAll.action");
+			$("#mainForm").attr("action", "${pageContext.request.contextPath}/category/deleteAll.action");
 			$("#mainForm").submit();
 		}
 	}
 	</script>
 </head>
 <body>
-	<%@include file="../common/header.jsp"%>
+	<%@include file="../common/headerf.jsp"%>
 	<div class="container">
 	<div class="row">
 		        <div class="col-md-2">
 		            <div class="list-group">
-		                <a href="${pageContext.request.contextPath}/product/findPageBeanList.action" class="list-group-item active">商品管理</a>
+		                <a href="${pageContext.request.contextPath}/category/findPageBeanList.action" class="list-group-item active">商品管理</a>
 		                <a href="${pageContext.request.contextPath}/category/getAddPage.action" class="list-group-item">添加分类产品</a>
 		                 
 		            </div>
@@ -48,7 +51,7 @@
 		        <div class="col-md-10">
 		            <ul class="nav nav-tabs">
 		                <li class="active">
-		                    <a href="${pageContext.request.contextPath}/product/findPageBeanList.action">商品列表</a>
+		                    <a href="${pageContext.request.contextPath}/category/findPageBeanList.action">商品列表</a>
 		                </li>
 		                <li>
 		                	<a href="${pageContext.request.contextPath}/category/getAddPage.action">添加分类产品</a>
@@ -61,17 +64,6 @@
 		            
 			<a href="javascript:deleteAll()"><input style="width:165px"  type="submit" value="批量删除" class="btn btn-primary btn-lg"/></a>
 		   
-		   		<form id="searchForm" action="${pageContext.request.contextPath}/category/searchByCondition.action" method="post" class="form-inline">
-			<input type="hidden" name="pageIndex" id="pageIndex"/>
-			产品名：<input type="text" name="name" value="${searchCondition.name }" class="form-control"/>
-			状态：<select id="status" name="status" class="form-control" >
-					<option value="">不限</option>
-					<option value="1">在售</option>
-					<option value="2">下架</option>
-			    </select>
-			<input type="submit" value="搜索" class="btn btn-primary btn-lg"/>
-
-		      </form>
 		   
 		   <form id="mainForm" action="" method="post">
 		    <table class="table align-center table table-striped table-bordered table-hover table-condensed " >
@@ -87,7 +79,7 @@
 			<td class="success">创建时间</td>
 			<td class="warning">更新时间</td>
 			<td class="active">删除</td>
-			<td>修改</td>	
+			
 		</tr>
         <c:forEach items="${pageBean.list}" var="stu">
 				<tr class="warning">
@@ -109,7 +101,6 @@
 					<fmt:formatDate value='${stu.getUpdateTime()}' pattern='yyyy-MM-dd'/>
 					</td>
 					<td ><a href="javascript:delCategory('${stu.id }')"><input type="button" value="删除" class="btn btn-danger"/></a></td>
-					<td><a  href="${pageContext.request.contextPath}/category/update.action?id=${stu.getId()}"><input type="button" value="修改" class="btn btn-info"/></a></td>
 			      </tr>
 		</c:forEach>
 	</table>

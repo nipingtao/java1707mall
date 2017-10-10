@@ -28,6 +28,9 @@ public interface IProductService {
 	List<Category> findParentCategory();
 
 
+	List<Product> find(int CategoryId);
+
+
 
 
 }
