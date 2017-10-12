@@ -24,11 +24,6 @@ public class IndexController {
 		return "index";
 	}
 
-	// 商品身体
-	/*@RequestMapping(value = "/list.shtml")
-	public String productMain() {
-
-		
-	}*/
+	
 
 }

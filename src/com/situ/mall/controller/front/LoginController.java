@@ -62,7 +62,7 @@ public class LoginController {
 		User user =	userService.findByNameAndPassword(username,password);
 		if (user != null) {
 			model.addAttribute("user", user);
-		 return "index";
+		 return "forward:/index.shtml";
 		} else {
 			//登陆失败
 			return "redirect:/login/register.shtml";

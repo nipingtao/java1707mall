@@ -7,10 +7,11 @@
         <resultMap id="ggMap" type="Gg">
 		<id property="id" column="id" />
 		<result property="mainImage" column="main_image" />
+		<result property="subImages" column="sub_images" />
 	</resultMap>
   
   	<sql id="Base_Column_List" >
-    	id, main_image
+    	id, main_image，sub_images
   	</sql>
        
         <select id="findAll" resultMap="ggMap">
@@ -32,15 +33,15 @@
 	</select>
 	<select id="findPageBeanList" resultMap="ggMap">
 		<!-- select <include refid="Base_Column_List"></include> from product -->
-		SELECT id, main_image
+		SELECT id, main_image,sub_images
          FROM gg
          
 		limit #{index},#{pageSize}
 	</select>
 	<insert id="add" parameterType="gg" >
 		  insert into gg (id,
-	    main_image) 
-	    values (#{id},#{mainImage})
+	    main_image,sub_images) 
+	    values (#{id},#{mainImage},#{subImages})
 	</insert>
 
 	

@@ -143,7 +143,7 @@
 			<ul>
 				<c:forEach items="${list}" var="product">
 					<li>
-						<a href="${ctx}/product/detail.shtml?id=${product.id}"><img  src="/pic/${product.mainImage}" width="350" height="350"></a> 
+						<a href="${ctx}/product/detail.shtml?id=${product.id}"><img  src="/pic/${product.mainImage}" width="350" height="200"></a> 
 						<h5><p style= "color:red ">￥${product.price}</p></h5>
 						<p>${product.name}</p>
 					</li>

@@ -3,6 +3,8 @@ package com.situ.mall.pojo;
 import java.math.BigDecimal;
 import java.util.Date;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 public class Product {
       
 	private Integer id;
@@ -169,7 +171,7 @@ public class Product {
 	public void setStock(Integer stock) {
 		this.stock = stock;
 	}
-
+	@JsonIgnore
 	public Integer getStatus() {
 		return status;
 	}

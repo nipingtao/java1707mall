@@ -94,7 +94,6 @@
 					<td>${stu.id}</td>
 					
 					<td><img alt="" src="/pic/${stu.mainImage}" width="80" height="60""></td>
-				
 					<td><a href="javascript:delGg('${stu.id }')"><input
 							type="button" value="删除" class="btn btn-danger" /></a></td>
 			</c:forEach>

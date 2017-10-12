@@ -5,11 +5,34 @@ public class Gg {
 
     private String mainImage;
     
+    private String subImages;
+    
     
 
 	public Gg() {
 		super();
 		// TODO Auto-generated constructor stub
+	}
+
+
+
+	public Gg(Integer id, String mainImage, String subImages) {
+		super();
+		this.id = id;
+		this.mainImage = mainImage;
+		this.subImages = subImages;
+	}
+
+
+
+	public String getSubImages() {
+		return subImages;
+	}
+
+
+
+	public void setSubImages(String subImages) {
+		this.subImages = subImages;
 	}
 
 
@@ -48,8 +71,12 @@ public class Gg {
 
 	@Override
 	public String toString() {
-		return "Gg [id=" + id + ", mainImage=" + mainImage + "]";
+		return "Gg [id=" + id + ", mainImage=" + mainImage + ", subImages=" + subImages + "]";
 	}
+
+
+
+	
 	
 	
     

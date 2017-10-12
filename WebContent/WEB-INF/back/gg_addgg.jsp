@@ -63,11 +63,18 @@
 		            <form id="form-add" class="form_border"  action="/Java1707Mall/gg/AddGgService.action" enctype="multipart/form-data" method="post">
 	                    
 	                     <div  class="form-group">
-					  		<label >广告图片</label>
+					  		<label >广告主图</label>
 						  	<img alt="" id="imgId" src="" width="100" height="100">
 						  	<input type="hidden" id="mainImage" name="mainImage"/>
 						  	<input type="file" name="pictureFile" onchange="uploadPic();"/>
 				         </div> 
+		                    <div class="form-group">
+					  	<label>广告图片</label>
+					  	 <a href="javascript:void(0)" class="picFileUpload" id="picFileUpload">上传图片</a>
+		                 <input type="hidden" name="subImages" id="subImages"/>
+		                 <div id="J_imageView"></div>
+					  </div>
+					  <div class="form-group">
 		                    <input class="btn btn-success btn-lg" type="submit" value="添加"/>
 	                	</form>
 		            <!-- 学生添加表单  end -->
@@ -75,4 +82,39 @@
 	
 </body>
 </html>
+
+<script type="text/javascript">
+var myKindEditor ;
+KindEditor.ready(function(K) {
+	var kingEditorParams = {
+			//指定上传文件参数名称
+			filePostName  : "pictureFile",
+			//指定上传文件请求的url。
+			uploadJson : "${ctx}/upload/pic.action",
+			//上传类型，分别为image、flash、media、file
+			dir : "image",
+			afterBlur: function () { this.sync(); }
+
+	}
+	var editor = K.editor(kingEditorParams);
+	//多图片上传
+	K('#picFileUpload').click(function() {
+		editor.loadPlugin('multiimage', function() {
+			editor.plugin.multiImageDialog({
+				clickFn : function(urlList) {
+					console.log(urlList);
+					var div = K('#J_imageView');
+					var imgArray = [];
+					div.html('');
+					K.each(urlList, function(i, data) {
+						imgArray.push(data.url);
+						div.append('<img src="' + data.url + '" width="80" height="50">');
+					});
+					$("#subImages").val(imgArray.join(","));
+					editor.hideDialog();
+				}
+			});
+		});
+	});
+});
 </script>

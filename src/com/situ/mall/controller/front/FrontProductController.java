@@ -24,7 +24,7 @@ import com.situ.mall.service.IProductService;
 			if (null != subImagesStr && !subImagesStr.equals("")) {
 				String[] subImages = subImagesStr.split(",");
 				for (int i = 0; i < subImages.length; i++) {
-					subImages[i] = MallConstant.SERVER_ADDRES + subImages[i];
+					subImages[i] =  subImages[i];
 				}
 				//放到域对象中
 				model.addAttribute("subImages", subImages);
