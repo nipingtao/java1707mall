@@ -19,7 +19,9 @@
                 <li class="active"><a href="${pageContext.request.contextPath}/product/findPageBeanList.action"><span class="glyphicon glyphicon-home"></span>&nbsp;&nbsp;商品管理</a></li>
                 <li ><a href="${pageContext.request.contextPath}/category/findPageBeanList.action"><span class="glyphicon glyphicon-user"></span>&nbsp;&nbsp;商品分类</a></li>
                 <li><a href="${pageContext.request.contextPath}/gg/findPageBeanList.action"><span class="glyphicon glyphicon-list-alt"></span>&nbsp;&nbsp;广告管理</a></li>
-                <li><a href="${pageContext.request.contextPath}/administ/findAll.action"><span class="glyphicon glyphicon-tags"></span>&nbsp;&nbsp;教务管理</a></li>
+                <li><a href="${pageContext.request.contextPath}/shipping/findPageBeanList.action"><span class="glyphicon glyphicon-tags"></span>&nbsp;&nbsp;收货地址管理</a></li>
+                <li><a href="${pageContext.request.contextPath}/orderBack/findPageBeanList.action"><span class="glyphicon glyphicon-tags"></span>&nbsp;&nbsp;收货地址管理</a></li>
+                     
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 <li class="dropdown">

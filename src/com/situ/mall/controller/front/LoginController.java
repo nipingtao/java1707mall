@@ -4,6 +4,9 @@ package com.situ.mall.controller.front;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -58,10 +61,12 @@ public class LoginController {
 		return "redirect:/login/login.shtml";
 	}
 	@RequestMapping(value = "/dd")
-	protected String dd(Model model,String username,String password){
+	protected String dd(Model model, HttpServletRequest req,String username,String password){
 		User user =	userService.findByNameAndPassword(username,password);
 		if (user != null) {
-			model.addAttribute("user", user);
+			/*model.addAttribute("user", user);*/
+			HttpSession session = req.getSession(true);
+			session.setAttribute("user", user);
 		 return "forward:/index.shtml";
 		} else {
 			//登陆失败

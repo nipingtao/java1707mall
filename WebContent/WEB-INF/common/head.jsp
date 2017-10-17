@@ -7,3 +7,6 @@
 
 
 <script type="text/javascript" src="${ctx}/resources/thirdlib/jquery/jquery.js"></script>
+<script type="text/javascript" src="${ctx}/resources/thirdlib/jquery/index.js"></script>
+<script type="text/javascript" src="${ctx}/resources/thirdlib/jquery/modernizr-custom-v2.7.1.min.js"></script>
+<script type="text/javascript" src="${ctx}/resources/thirdlib/jquery/jquery.SuperSlide.js"></script>

@@ -8,7 +8,6 @@
 		<title>靓淘网</title>
 		<%@include file="../common/head.jsp" %>
 		<link rel="stylesheet" href="${ctx}/resources/front/css/index_style.css" />
-		<link rel="stylesheet" href="${ctx}/resources/front/css/home.css" />
 		<style>
 			
 			.surper_big ul {

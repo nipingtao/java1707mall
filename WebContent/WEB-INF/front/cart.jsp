@@ -8,6 +8,32 @@
 		<meta charset="UTF-8">
 		<title>靓淘网_购物车</title>
 		<link rel="stylesheet" href="${ctx}/resources/front/css/cart_style.css" />
+		<script type="text/javascript">
+			function subCart(productId){
+				var amount = $("#amount").val(); 
+				amount--;
+				if(amount == 0) {
+					delItems(productId);
+					return;
+				}
+				window.location.href="${ctx}/cart/addCart.shtml?productId="+productId+"&amount="+-1;
+			}
+			 function addCart(productId,stock){
+			var amount = $("#amount").val();
+			amount++;
+			if(amount > stock) {
+				alert("最多只能购买"+stock+"件");
+				return;
+			} 
+			window.location.href="${ctx}/cart/addCart.shtml?productId="+productId+"&amount="+1;
+			} 
+			 function delItems(productId){
+				 var del = confirm("确定删除？");
+		 			if (del) {
+		 				location.href="${ctx}/cart/deleteCartItems.shtml?productId="+productId;
+		 			}
+			 }
+		</script>
 	</head>
 
 	<body>
@@ -131,9 +157,9 @@
 							</span>
 						</li>
 						<li class="num_select">
-							<input class="car_ul_btn1" type="button" value="-" />
-							<input class="car_ul_text" type="text" placeholder="1" value="${cartItemVO.amount}" />
-							<input class="car_ul_btn2" type="button" value="+" />
+							<input class="car_ul_btn1"  type="button" onclick="subCart(${cartItemVO.product.id})" value="-" />
+							<input class="car_ul_text" id="amount" type="text"  placeholder="1" value="${cartItemVO.amount}" />
+							<input class="car_ul_btn2"  type="button" onclick="addCart(${cartItemVO.product.id},${cartItemVO.product.stock})" value="+" />
 						</li>
 						<li class="money">
 							<span style="color: #F41443;">
@@ -141,7 +167,7 @@
 							</span>
 						</li>
 						<li class="delete">
-							<img src="${ctx}/resources/front/img/166.png" />
+							<img onclick="delItems(${cartItemVO.product.id})" src="${ctx}/resources/front/img/166.png" />
 						</li>
 					</ul>
 				</div>
@@ -159,7 +185,7 @@
 					</li>
 					<li style="margin-left: 8px;margin-right: 265px;">全选</li>
 					<li style="margin-left: 213px;margin-right: 18px;">总金额（已免运费）：<span style="color: #F41443;">¥${buyCartVO.totalPrice}</span></li>
-					<li class="total_right"><a href="">立即结算</a></li>
+					<li class="total_right"><a href="${ctx}/order/settle.shtml">立即结算</a></li>
 				</ul>
 			</div>
 					<div class="sp">

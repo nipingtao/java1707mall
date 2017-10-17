@@ -1,6 +1,7 @@
 package com.situ.mall.vo;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 import org.junit.validator.PublicClassValidator;
@@ -69,6 +70,17 @@ public class BuyCartVO {
 	@Override
 	public String toString() {
 		return "BuyCartVO [items=" + items + ", productId=" + productId + "]";
+	}
+
+	public void delItems(Integer productId) {
+		Iterator<CartItemVO> iterator = items.iterator();
+		while (iterator.hasNext()) {
+			CartItemVO cartItemVO = (CartItemVO) iterator.next();
+			if (cartItemVO.getProduct().getId() == productId) {
+				iterator.remove();
+			}
+		}
+
 	}
 
 	
