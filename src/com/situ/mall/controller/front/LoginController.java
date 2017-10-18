@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.fasterxml.jackson.core.sym.Name;
+import com.situ.mall.common.ServerResponse;
 import com.situ.mall.pojo.Category;
 import com.situ.mall.pojo.Product;
 import com.situ.mall.pojo.User;
@@ -61,16 +62,17 @@ public class LoginController {
 		return "redirect:/login/login.shtml";
 	}
 	@RequestMapping(value = "/dd")
-	protected String dd(Model model, HttpServletRequest req,String username,String password){
+	@ResponseBody
+	protected ServerResponse  dd(Model model, HttpServletRequest req,String username,String password){
 		User user =	userService.findByNameAndPassword(username,password);
 		if (user != null) {
 			/*model.addAttribute("user", user);*/
 			HttpSession session = req.getSession(true);
 			session.setAttribute("user", user);
-		 return "forward:/index.shtml";
+			return ServerResponse.createSuccess("登录成功");
 		} else {
 			//登陆失败
-			return "redirect:/login/register.shtml";
+			return ServerResponse.createError("登录失败");
 		}
 	}
 	@RequestMapping(value = "/fenlei")

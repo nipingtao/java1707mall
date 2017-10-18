@@ -43,7 +43,10 @@ public class FrontOrderController {
 	    private IProductService productService;
 	 @Autowired
 		private IOrderItemService orderItemService;
+	 @Autowired
 	 private IShippingService shippingservice;
+	 @Autowired
+		private IOrderServiceBack orderServiceBack;
 
 	@RequestMapping("/settle")
 	public String settle(Model model, HttpServletRequest request,Integer productId, Integer amount, 
@@ -103,6 +106,7 @@ public class FrontOrderController {
 			order.setOrderNo(orderNo);
 			System.out.println(order);
 			order.setUserId(user.getId());
+			order.setStatus(10);
 			//将订单插入数据库
 			boolean b = orderItemService.add(order);
 			ObjectMapper objectMapper = new ObjectMapper();
@@ -171,6 +175,12 @@ public class FrontOrderController {
 			System.out.println(list);
 			return "apy";  
 		}
-	
+	 @RequestMapping("/deletById")
+		private String deletById(int id){
+		    System.out.println("***********************************");
+			orderServiceBack.deletById(id);
+			return "redirect:/order/apy.shtml";
+			
+		}
 
 }

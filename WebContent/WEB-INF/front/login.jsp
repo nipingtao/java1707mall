@@ -9,6 +9,31 @@
 		<title>靓淘网-登录</title>
 		<%@include file="../common/head.jsp" %>
 		<link rel="stylesheet" type="text/css" href="${ctx}/resources/front/css/login_style.css" />
+		
+		<script type="text/javascript">
+			function submitForm() {
+				var options = {
+						url:"${ctx}/login/dd.shtml",
+						type:"post",
+						dataType:"json",
+						data:$("#login_form").serialize(),
+						success:function(data){
+							if(data.status == 0) {
+								layer.msg(data.msg);
+								//当你在iframe页面关闭自身时
+								var index = parent.layer.getFrameIndex(window.name); //先得到当前iframe层的索引
+								setTimeout(function(){
+									parent.layer.close(index); //再执行关闭  
+									window.parent.location.reload();//刷新父页面
+								},1000);
+							} else {
+								layer.msg(data.msg);
+							} 
+						}
+				};
+				$.ajax(options);
+			}
+		</script>
 	</head>
 
 	<body>
@@ -29,7 +54,8 @@
 			<img class="banner_img" src="${ctx}/resources/front/img/beijing.png" />
 			<div class="banner_center">
 				<div class="login">
-					<form action="/Java1707Mall/login/dd.shtml" method="post">
+				<form id="login_form">
+					<!-- <form action="/Java1707Mall/login/dd.shtml" method="post"> -->
 						<ul>
 							<li class="login_title_1">
 								<a href="">密码登录</a>
@@ -41,7 +67,7 @@
 							<li>
 								<input name="username"  class="login_user" type="text" placeholder="会员名/邮箱/手机号" />
 								<input name="password" class="login_password" type="password" placeholder="密码" />
-								<input class="login_btn" type="submit" value="登录" />
+								<input class="login_btn" type="button" onclick="submitForm()" value="登录" />
 							</li>
 							<li class="login_select">
 								<a class="weibo" href="">微博登录</a>
@@ -56,7 +82,7 @@
 								<a href="">免费注册</a>
 							</li>
 						</ul>
-					</form>
+					</form> 
 				</div>
 			</div>
 			<div class="clearfix"></div>

@@ -8,6 +8,16 @@
 		<title>靓淘网</title>
 		<%@include file="../common/head.jsp" %>
 		<link rel="stylesheet" href="${ctx}/resources/front/css/index_style.css" />
+		<script type="text/javascript">
+			function login(){
+				layer.open({
+					type:2,//（iframe层）
+					title:'用户登录',
+					area: ['500px', '400px'],
+					offset: '200px',//只定义top坐标，水平保持居中
+					content:"${pageContext.request.contextPath}/login/login.shtml"
+				});
+			}
 </script>
 	</head>
 
@@ -20,14 +30,20 @@
 						欢迎来到靓淘！
 					</span> -->
 					 <a id="dLabel" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style= "color:red " >
-                                                                 欢迎您：${user.username}  来到靓淘！
+                                                                 欢迎您来到靓淘！
                         <span class="caret"></span>
                     </a>
 				</div>
 				<div class="right">
 					<ul>
-						<li><a class="login" href="${pageContext.request.contextPath}/login/login.shtml" target="_blank">请登录</a></li>
-						<li><a href="${pageContext.request.contextPath}/login/register.shtml" target="_blank">快速注册</a></li>
+					<c:if test="${empty user}">
+						<li><a class="login" href="javascript:login()" target="_blank">用户登陆</a></li>
+						<li><a href="javascript:login()" target="_blank">快速注册</a></li>
+					</c:if>	
+					<c:if test="${!empty user}">
+						<li><a class="login" href="" target="_blank">${user.username}</a></li>
+						<li><a href="${pageContext.request.contextPath}/login/login.shtml" target="_blank">注销</a></li>
+					</c:if>
 						<li><a class="collect" href="">我的收藏</a></li>
 						<li><a class="indent" href="">我的订单</a></li>
 						<li><a class="phone" href="">手机靓淘</a></li>

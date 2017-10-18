@@ -27,7 +27,7 @@
 		                    <a href="${pageContext.request.contextPath}/orderBack/findPageBeanList.action">详细信息</a>
 		                </li>
 		            </ul>
-		            ${orderItem.totalPrice}
+		           
 		   <form id="mainForm" action="" method="post">
 		    <table class="table align-center table table-striped table-bordered table-hover table-condensed " >
 		    <tr>
